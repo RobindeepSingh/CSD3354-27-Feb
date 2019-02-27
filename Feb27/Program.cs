@@ -31,11 +31,11 @@ namespace Feb27
 
 
 }
-public class ShippingCalculator { 
-    public float CalculatorShipping(Order order) {
+    public class ShippingCalculator { 
+        public float CalculatorShipping(Order order) {
 
-        if (order.TotalPrice < 30f) return order.Totalprice * 0.1f;
-        return 0;
+            if (order.TotalPrice < 30f) return order.Totalprice * 0.1f;
+            return 0;
     }
 }
 
