@@ -8,13 +8,29 @@ namespace Feb27
 {
     class Program
     {
-        static void Main(string[] args)
+       public class Orderprocessor
         {
-            var orderProcessor = new OrderProcessor();
-            var order = new Order { DatePlaced = DateTime.Now, TotalPrice = 100f };
-            orderProcessor.Process();
+            private readonly Shippingcalculator_shippingCalculator;
+            public Orderprocessor()
+            {
+                _shippingCalculator = new ShippingCalculator();
+
+            }
+        }
+        public void Process(Order order)
+        {
+            if (order.IsShipped)
+                throw new InvalidOperationException("This order is already processed");
+            order.Shipment = new Shipment
+            {
+                Cost = _shippingCalculator.Calculateshipping(order),
+            ShippingDate = DateTime.Today.AddDays(1)
+
+
+            };
+        }
 
 
         }
     }
-}
+
